@@ -8,6 +8,8 @@ import { makeAutoObservable, reaction, runInAction, toJS } from "mobx";
 import { observer } from "mobx-react";
 import axios from "axios";
 import { useEventListener } from "ahooks";
+import * as process from "process";
+
 
 const StoreContext = React.createContext<TasksStore | null>(null);
 
@@ -28,7 +30,7 @@ type Delta = {
 export class TasksStore {
   socket: Socket;
   tasks: Record<string, Task> = {};
-  baseUrl: string = "http://localhost:8080";
+  baseUrl: string = process.env.REACT_APP_API_URL || "http://localhost:3001";
   ignoreChanges: boolean = false;
   deltaStack: Delta[] = [];
   deltaPointer: number = -1;
