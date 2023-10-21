@@ -30,7 +30,7 @@ type Delta = {
 export class TasksStore {
   socket: Socket;
   tasks: Record<string, Task> = {};
-  baseUrl: string = process.env.REACT_APP_API_URL || "http://localhost:3001";
+  baseUrl: string = process.env.API_URL || "http://localhost:3001";
   ignoreChanges: boolean = false;
   deltaStack: Delta[] = [];
   deltaPointer: number = -1;
